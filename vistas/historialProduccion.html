@@ -1,0 +1,62 @@
+<!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+      <div class="container">
+        <h2 align="center" >Historial de producción</h2>
+      </div>
+    </div>
+
+    <div class="container" >
+        <div class="row" >
+
+            <div ng-repeat="(ind, grafico) in graficos" class="col-md-6 text-center" style="border-color: #aaaaaa; border-width: 1px; border-style: solid; border: 10px ridge #6666cc">
+                <div class="row">
+                    <div class="col-md-12">
+                        <ng-dygraphs ng-if="grafico.graph.data.length" style="height:250px;"
+                                     data="grafico.graph.data"
+                                     options="grafico.graph.options" >
+                        </ng-dygraphs>
+                    </div>
+                    <div class="col-md-12" >
+                        <h4 >{{grafico.nombre}}</h4>
+                    </div>
+                    <div class="col-md-6">
+                        <h3>Fecha Inicio</h3>
+                        <h4>{{grafico.inicio}}</h4>
+                    </div>
+                    <div class="col-md-6">
+                        <h3>Fecha Fin</h3>
+                        <h4>{{grafico.fin}}</h4>
+                    </div>
+                    <div class="col-md-6" ng-if="grafico.tipo_cepa">
+                        <h3>Tipo Cepa</h3>
+                        <h4>{{grafico.tipo_cepa}}</h4>
+                    </div>
+                    <div class="col-md-6" ng-if="grafico.cantidad_cuba">
+                        <h3>Cantidad Cuba</h3>
+                        <h4>{{grafico.cantidad_cuba}}</h4>
+                    </div>
+                    <div class="col-md-12">
+                        <a ng-csv="getData(grafico.graph.data)" class="btn btn-primary" style="margin-bottom:70px" filename="graph.csv">Exportar a CSV</a>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+    </div> <!-- /container -->
+
+    
+ <div class="footer">
+   <nav class="navbar navbar-inverse" ng-controller="NavCtrl" style=" bottom: 0; width: 100%; position: relative; border-top: 5px; color: white" >
+  <div class="container-fluid">
+    <div class="navbar-header" align="center">
+    <div align="text-center">
+<p></p>
+<p align="center">&copy;Tecno - CO2 2016, Todos los derechos reservados -- Información de contacto: <a href="mailto:contacto@ite.cl" style="color:black">contacto@ite.cl</a>.</p>
+    
+</div>
+    </div>
+    </div>
+    </nav>
+</div>

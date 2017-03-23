@@ -1,0 +1,17 @@
+{
+  "name": "fire",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.17.5",
+    "connect": "^3.5.0",
+    "gulp": "^3.9.1",
+    "streamify": "^0.2.6"
+  }
+}

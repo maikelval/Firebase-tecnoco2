@@ -1,0 +1,243 @@
+<div class="modal fade" id="editarUsuario" tabindex="-1" role="dialog" ng-controller="BrowseCtrl">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="panel panel-info">
+        
+      <div class="panel-heading text-center">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="panel-title">Editar Perfil</h4>
+      </div>
+      <div class="panel-body">
+        <div>
+          <form class="form-horizontal">
+            <div class="row">
+              <div class="col-md-offset-2 col-md-10">
+                <div class="form-group">
+                  <label for="inputPassword3" class="col-sm-4 control-label">Perfil</label>
+                  <div class="col-sm-6">
+                      <input type="text" ng-model="usuarioElegido.perfil" value="usuarioElegido.perfil" disabled>
+                  </div>
+                </div>
+            </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-4 control-label">Nombre/Razón Social:</label>
+                  <div class="col-sm-6">
+                    <input type="text" ng-model="usuarioElegido.nombre_empresa" class="form-control" id="inputEmail3" placeholder="Nombre/Razón Social">
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-4 control-label">Rut:</label>
+                  <div class="col-sm-6">
+                    <input type="text" ng-model="usuarioElegido.rut" class="form-control" id="inputEmail3" placeholder="xxxxxxxx-x">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-4 control-label">Representante legal:</label>
+                  <div class="col-sm-6">
+                    <input type="text" ng-model="usuarioElegido.representante_legal" class="form-control" id="inputEmail3" placeholder="Representante legal">
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-4 control-label">Rut representante:</label>
+                  <div class="col-sm-6">
+                    <input type="text" ng-model="usuarioElegido.rut_representante" class="form-control" id="inputEmail3" placeholder="Rut representante">
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="row">  
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-4 control-label">Ubicación bodega:</label>
+                  <div class="col-sm-6">
+                    <input type="text" ng-model="usuarioElegido.ubicacion_bodega" class="form-control" id="inputEmail3" placeholder="Dirección">
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-4 control-label">Ubicación oficina:</label>
+                  <div class="col-sm-6">
+                    <input type="text" ng-model="usuarioElegido.ubicacion_oficina" class="form-control" id="inputEmail3" placeholder="En caso difiera de la bodega">
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="row"> 
+              <!-- <div class="col-md-12"> -->
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-4 control-label">Coordenadas:</label>
+                  <div class="col-sm-6">
+                    <input type="text" ng-model="usuarioElegido.coordenadas" class="form-control" id="inputEmail3" placeholder="Latitud, longitud">
+                  </div>
+                </div>
+              <!-- </div> -->
+            </div>
+
+            <div class="row">
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-4 control-label">Email:</label>
+                  <div class="col-sm-6">
+                    <input type="email" ng-model="usuarioElegido.email" class="form-control" id="inputEmail3" placeholder="Email">
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-4 control-label">Password:</label>
+                  <div class="col-sm-6">
+                    <input type="text" ng-model="usuarioElegido.password" class="form-control" id="inputEmail3" placeholder="Password provisional">
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="row"> 
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-4 control-label">Fono:</label>
+                  <div class="col-sm-6">
+                    <input type="text" ng-model="usuarioElegido.fono" class="form-control" id="inputEmail3" placeholder="Fono">
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-4 control-label">Litros anuales:</label>
+                  <div class="col-sm-6">
+                    <input type="text" ng-model="usuarioElegido.litros_anuales" class="form-control" id="inputEmail3" placeholder="Cantidad">
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="row"> 
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-4 control-label">Cepas producidas:</label>
+                  <div class="col-sm-6">
+                    <input type="text" ng-model="usuarioElegido.cepas_producidas" class="form-control" id="inputEmail3" placeholder="Cantidad">
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-4 control-label">Cantidad cubas totales:</label>
+                  <div class="col-sm-6">
+                    <input type="text" ng-model="usuarioElegido.cantidad_cubas_totales" class="form-control" id="inputEmail3" placeholder="Cantidad">
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="row"> 
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-4 control-label">Cantidad cepas destinadas a tintos:</label>
+                  <div class="col-sm-6">
+                    <input type="text" ng-model="usuarioElegido.cantidad_cepas_destinadas_tintos" class="form-control" id="inputEmail3" placeholder="Cantidad">
+                  </div>
+                </div>
+              </div>
+              
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-4 control-label">Cantidad cepas destinadas a blancos:</label>
+                  <div class="col-sm-6">
+                    <input type="text" ng-model="usuarioElegido.cantidad_cepas_destinadas_blancos" class="form-control" id="inputEmail3" placeholder="Cantidad">
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="row"> 
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-4 control-label">Fecha de conexión a Cuba:</label>
+                  <div class="col-sm-6">
+                    <input type="text" ng-model="usuarioElegido.fecha_conexion_cuba" class="form-control" id="inputEmail3" placeholder="Elegir formato más cómodo">
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-4 control-label">Cepa de cuba conectada:</label>
+                  <div class="col-sm-6">
+                    <input type="text" ng-model="usuarioElegido.cepa_cuba_conectada" class="form-control" id="inputEmail3" placeholder="Cantidad">
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="row"> 
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-4 control-label">Fecha de desconexión de Cuba:</label>
+                  <div class="col-sm-6">
+                    <input type="text" ng-model="usuarioElegido.fecha_desconexion_cuba" class="form-control" id="inputEmail3" placeholder="Elegir formato más cómodo">
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-4 control-label">Fecha de instalación de equipo en bodega:</label>
+                  <div class="col-sm-6">
+                    <input type="text" ng-model="usuarioElegido.fecha_instalacion_equipo_bodega" class="form-control" id="inputEmail3" placeholder="Elegir formato más cómodo">
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+              <!-- <div class="col-md-6"> -->
+                
+             <!--  </div> -->
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        <button ng-click="editarCliente(usuarioElegido)" class="btn btn-warning">Actualizar</button>
+      </div>
+    </div><!-- /.end-panel -->
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

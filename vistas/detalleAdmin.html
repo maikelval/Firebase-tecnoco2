@@ -1,0 +1,78 @@
+<div class="row">
+</br>
+<div class="col-md-offset-1 col-md-11">
+			
+			<!-- HEADER -->
+			<div class="row">
+				<div class="col-md-6">
+					<h3><b>Usuario:</b> {{ usuarioElegido.nombre }}</h3>
+					<span>
+					</span>								
+				</div>
+				
+				<div class="col-md-6 title">
+					<div>
+						
+						<div ng-if="usuarioActual.perfil.perfil === 'admin'">
+							<!-- <a href="" data-toggle="modal" data-target="#regisMiembroModal" class="btn btn-warning">Agregar Miembro</a>&nbsp; -->
+							<div class="btn-group">
+							    <a href="" class="btn btn-info">Admin</a>
+							    <a href="" class="btn btn-info dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
+							    <ul class="dropdown-menu">
+							    	<li><a href="" data-toggle="modal" data-target="#editarAdmin">EDITAR NOMBRE</a></li>
+							    </ul>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+			<br>
+
+			<!-- DESCRIPTION -->
+			<div class="row">
+				<div class="col-md-11">
+					<div class="panel panel-default">
+					    <div class="panel-heading">
+					        <h3 class="panel-title">Descripción</h3>
+					    </div>
+					    <div class="panel-body">
+						  	
+							        <div class="title" ng-hide="miembros && miembros.length > 0">
+										<span>NO HAY DATOS DE ESTE USUARIO</span>	
+									</div><br>
+
+									<!-- SEARCH TOOL -->
+									<div class="form-group col-md-6 no-print" ng-show="miembros && miembros.length > 0">
+										<div class="input-group">
+											<div class="input-group-addon">
+												<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+											</div>
+									      <input type="text" ng-model="searchMiembro" class="form-control" placeholder="Buscar">
+									    </div>	
+									</div>
+					    </div>
+					</div>			
+				</div>	
+			</div>
+
+			
+
+</div><!--  End of Column 12 -->
+</div><!--  End of Row -->
+<div ng-include="'vistas/partials/editarAdmin.html'"></div>
+
+<div class="footer">
+   <nav class="navbar navbar-inverse" ng-controller="NavCtrl" style=" bottom: 0; width: 100%; position: relative; border-top: 5px; color: white" >
+  <div class="container-fluid">
+    <div class="navbar-header" align="center">
+    <div align="text-center">
+<p></p>
+<p align="center">&copy;Tecno - CO2 2016, Todos los derechos reservados -- Información de contacto: <a href="mailto:contacto@ite.cl" style="color:black">contacto@ite.cl</a>.</p>
+    
+</div>
+    </div>
+    </div>
+    </nav>
+</div>

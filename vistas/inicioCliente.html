@@ -1,0 +1,150 @@
+<!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="container" ng-controller="IClienteCtrl">
+        <div class="row">
+            <div class="col-md-3">
+                <!-- <img class="media-object" src="holder.js/120x170?theme=social" alt="..."> -->
+                <h3>Nombre: {{usuarioActual.nombre_empresa}}</h1>
+                <h3>Ubicación: {{usuarioActual.ubicacion_oficina}}</h1>
+
+
+       
+
+            </div>
+            <div class="col-md-9">
+                <!-- <h3>Fecha Conexión: {{usuarioActual.fecha_conexion_cuba}}</h3>
+                <h3>Cepa: {{usuarioActual.fecha_conexion_cuba}}</h3>
+                <h3>Capacidad de la cuba: {{usuarioActual.cantidad_cubas_totales}}</h3> -->
+
+                <div class="row" >
+                    <div class="col-md-12" >
+                        <a href="#/produccion/{{usuarioActual.$id}}" class="btn btn-success"  > Historial de Producción</a>
+
+                    </div>
+
+                             <div>
+
+<div>
+                    <div class="col-md-12 text-center" style="border-color: #aaaaaa; border-width: 1px; border-style: solid; border: 10px ridge #6666cc; height: 230px; width: 250px">
+                        <h2>Promedio Temperaturas</h2>
+                        <span id="temperatura" class="badge"><h1>{{promedio}}</h1></span>
+
+                    </div>
+                    <div ng-if="produccionIniciada && promedioProduccion" class="col-md-12 text-center" style="border-color: #aaaaaa; border-width: 1px; border-style: solid; border: 10px ridge #6666cc; height: 230px; width: 250px">
+                        <h2>Promedio Temperaturas Producción</h2>
+                        <span id="temperaturaProd" class="badge"><h1>{{promedioProduccion}}</h1></span>
+                    </div>
+                    <div ng-if="produccionIniciada && varianza" class="col-md-12 text-center" style="border-color: #aaaaaa; border-width: 1px; border-style: solid; border: 10px ridge #6666cc; height: 230px; width: 250px">
+                        <h2>Varianza Temperaturas Producción</h2>
+                        <span id="temperaturaProd" class="badge"><h1>{{varianza}}</h1></span>
+                    </div>
+                </div>
+
+               <!--  <div class="row">
+                    <div class="col-xs-6 col-sm-3" style="border-color: #aaaaaa; border-width: 1px; border-style: solid; border: 10px ridge #6666cc; height: 230px; width: 250px">
+                        <h2>Promedio Temperaturas</h2>
+                        <span id="temperatura" class="badge"><h1>{{promedio}}</h1></span>
+
+                    
+
+
+                    </div>
+                    <div ng-if="produccionIniciada && promedioProduccion" class="col-xs-6 col-sm-3" style="border-color: #aaaaaa; border-width: 1px; border-style: solid; border: 10px ridge #6666cc; float: right; height: 230px; width: 250px">
+                        <h2>Promedio Temperaturas Producción</h2>
+                        <span id="temperaturaProd" class="badge"><h1>{{promedioProduccion}}</h1></span>
+                    </div>
+                    <div ng-if="produccionIniciada && varianza" class="col-md-9 col-md-push-3" style="border-color: #aaaaaa; border-width: 1px; border-style: solid; border: 10px ridge #6666cc">
+                        <h2>Varianza Temperaturas Producción</h2>
+                        <span id="temperaturaProd" class="badge"><h1>{{varianza}}</h1></span>
+                    </div>
+                </div> -->
+            </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div align="center">
+                <ng-dygraphs ng-if="graph.data.length" style="height:650px; width: 800px"
+                             data="graph.data"
+                             options="graph.options" >
+                </ng-dygraphs>
+                <div class="row">
+                    <div class="col-md-6">
+                        
+                        <a class="btn btn-info"  href=""  ng-if="!produccionIniciada" ng-click="nuevaPro()" role="button"><i class="fa fa-pencil"></i>&nbsp;Nueva producción</a>
+                          <div ng-show="neW">
+                          <label for="inputPassword3" class="col-sm-4 control-label">Nombre de la producción</label>
+                  <div class="col-sm-12">
+                      <label class="radio-inline">
+                      <input type=""  id="formu" value="Nombre producción" >
+                    </label>
+                        <a class="btn btn-warning"  ng-click="iniciarProduccion()"> Iniciar Producción</a>
+                        </div>
+                        
+                    </div>
+                      </div>
+                    <div class="col-md-6">
+                        <a  class="btn btn-warning" ng-if="produccionIniciada" ng-click="terminarProduccion()"> Detener Producción</a>
+                        <p></p>
+                        <p></p>
+                        <p></p>
+                        <p></p>
+                        <p></p>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <div ng-include="'vistas/partials/inicioProduccion.html'"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.4/holder.min.js"></script>
+
+
+  <div class="footer">
+   <nav class="navbar navbar-inverse" ng-controller="NavCtrl" style=" bottom: 0; width: 100%; position: static; border-top: 5px; color: white" >
+  <div class="container-fluid">
+    <div class="navbar-header" align="center">
+    <div align="text-center">
+<p></p>
+<h4 align="center">&copy;Tecno - CO2 2016, Todos los derechos reservados -- Información de contacto: <a href="mailto:contacto@ite.cl" style="color:black">contacto@ite.cl</a>.</h4>
+    
+</div>
+    </div>
+    </div>
+    </nav>
+</div>
+
+
+<div class="modal fade" id="editarUsuario" tabindex="-1" role="dialog" ng-controller="BrowseCtrl">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="panel panel-info">
+        
+      <div class="panel-heading text-center">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="panel-title">Iniciar producción</h4>
+      </div>
+      <div class="panel-body">
+         <form class="form-horizontal">
+            <div class="row">
+              <div class="col-md-offset-2 col-md-10">
+                <div class="form-group">
+                  <label for="inputPassword3" class="col-sm-4 control-label">Nombre de la producción</label>
+                  <div class="col-sm-12">
+                      <label class="radio-inline">
+                      <input type=""  id="formu" value="cliente" >
+                    </label>
+                  </div>
+                </div>
+            </div>
+            </div>
+            </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        <a class="btn btn-warning" ng-if="!produccionIniciada" ng-click="iniciarProduccion()"> Iniciar Producción</a>
+      </div>
+    </div><!-- /.end-panel -->
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

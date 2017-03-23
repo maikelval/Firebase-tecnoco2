@@ -1,0 +1,54 @@
+  
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <title>Firebase - Temperatura</title>
+  </head>
+  <body>
+
+  <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dygraph/1.1.1/dygraph-combined.js" charset="utf-8"></script>
+
+  <div class="Header">
+  <h2>Firebase Temp</h2>
+  	  </div>
+<div id="div_g" style="width:800px; height:400px;"></div>
+   <div>
+	  </div>
+  <script>
+	       var data = [];
+      var t = new Date();
+      for (var i = 10; i >= 0; i--) {
+        var x = new Date(t.getTime() - i * 1000);
+           }
+
+      var g = new Dygraph(document.getElementById("div_g"), data,
+                          {
+                            drawPoints: true,
+                            showRoller: true,
+                            valueRange: [0.0, 40],
+                            labels: ['Time', 'Firebase']
+                          });
+      setInterval(function() {
+      var ref = new Firebase("https://tecno-co2.firebaseio.com/usuarios/MrDvyRh23HesXnlMmbltZXV2qep2/variables/temperatura");
+			ref.once("value", function(snapshot) { //función para obtener valor desde firebase
+ 		 var cpu = snapshot.val(); //carga el valor del snapshot en la variable cpu
+ 		 //window.alert(cpu); // visualiza  el valor de la variable cpu en pantalla
+ 		 adddata(cpu) //envía el valor de la variable cpu a la función adddata
+});
+        function adddata(value){
+        var x = new Date();  // current time
+        var y = value;
+      
+        data.push([x, y]);
+        g.updateOptions( { 'file': data } );
+        }
+        
+        
+      }, 1000);
+	  
+	  
+	  </script>
+  </body>
+</html>

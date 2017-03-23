@@ -1,0 +1,52 @@
+<div class="container">
+  <p><a class="btn btn-info"  href="" data-toggle="modal" data-target="#editarUsuario" role="button"><i class="fa fa-pencil"></i>&nbsp;Editar</a>
+    &nbsp;<a class="btn btn-info"  href="" data-toggle="modal" data-target="#passChange" role="button"><i class="fa fa-lock"></i>&nbsp;Cambiar password</a></p>
+  <div class="jumbotron">
+    <div class="container">
+      <h2>{{usuarioElegido.nombre_empresa}}</h2>
+      <p>Rut: {{usuarioElegido.rut}} <br/>
+      Reprentante legal: {{usuarioElegido.representante_legal}} <br/>
+      Rut representante: {{usuarioElegido.rut_representante}} <br/>
+      Email: {{usuarioElegido.email}} <br/></p>
+    </div>
+  </div>
+
+  <!-- DESCRIPTION -->
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-default">
+          <div class="panel-heading">
+              <h3 class="panel-title">Descripción</h3>
+          </div>
+          <div class="panel-body">
+            
+                  <div class="title" ng-hide="miembros && miembros.length > 0">
+                <span>NO HAY DATOS DE ESTE USUARIO</span> 
+              </div><br>
+          </div>
+      </div>      
+    </div>  
+  </div>
+
+        
+
+  </div><!--  End of Column 12 -->
+  </div><!--  End of Row -->
+
+</div><!-- End container -->
+<div ng-include="'vistas/partials/editarCliente.html'"></div>
+<div ng-include="'vistas/partials/passChange.html'"></div>
+
+<div class="footer">
+   <nav class="navbar navbar-inverse" ng-controller="NavCtrl" style=" bottom: 0; width: 100%; position: relative; border-top: 5px; color: white" >
+  <div class="container-fluid">
+    <div class="navbar-header" align="center">
+    <div align="text-center">
+<p></p>
+<p align="center">&copy;Tecno - CO2 2016, Todos los derechos reservados -- Información de contacto: <a href="mailto:contacto@ite.cl" style="color:black">contacto@ite.cl</a>.</p>
+    
+</div>
+    </div>
+    </div>
+    </nav>
+</div>
