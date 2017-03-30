@@ -1,4 +1,4 @@
-app.controller('AuthCtrl', function($scope, $location, Aut,Usuario, toaster) {
+app.controller('AuthCtrl', function($scope, $location, Aut,Usuario,$firebaseObject, toaster) {
 
 
 	$scope.registro = function(usuario) {
@@ -15,8 +15,11 @@ app.controller('AuthCtrl', function($scope, $location, Aut,Usuario, toaster) {
 		Aut.sesion(usuario).then(function(usuarioLogueado){
 
 			Usuario.usuarioElegido(usuarioLogueado.uid).$loaded(function(user){
-
-				if(user.perfil == 'cliente'){
+				console.log(user);
+				var refu = firebase.database().ref().child('/usuarios/'+user.$id);
+				$scope.referecia = $firebaseObject(refu);
+				console.log($scope.referecia.perfil);
+				if($scope.referecia.perfil == 'cliente'){
 
 					toaster.pop('success', 'Sesión iniciada exitosamente!');
 					$location.path('/inicioCliente/'+user.$id);

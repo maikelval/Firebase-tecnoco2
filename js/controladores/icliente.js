@@ -81,7 +81,7 @@ $scope.nuevaPro = function(){
 			 var total = list.length;
 			 var x = {
 				 id: list[total-3].$id,
-				 temperatura: list[total-3].temperatura
+				 temperatura: list[total-3].valor
 			 }
 			 var nombreForm = document.getElementById('formu').value;
 			 var produccion = {
@@ -113,7 +113,7 @@ $scope.nuevaPro = function(){
 			var total = list.length;
 			var x = {
 				id: list[total-1].$id,
-				temperatura: list[total-1].temperatura
+				temperatura: list[total-1].valor
 			}
 		   return x;
 	   }).then(function(x){

@@ -29,7 +29,45 @@
 
   <body ng-app="app">
     <toaster-container toaster-options="{'time-out': 6000, 'close-button':true}"></toaster-container>
-    <div ng-include="vistas/nav.html"></div>
+    <nav class="navbar navbar-inverse" ng-controller="NavCtrl">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-warning-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+     
+      <a class="navbar-brand" ng-if="usuarioActual.perfil === 'admin'" href="#/usuarios"><img src="css\logo-web.png" width="60px" align="center"></a>
+      <a class="navbar-brand" ng-if="usuarioActual.perfil === 'cliente'" href="#/inicioCliente/{{usuarioActual.perfil.$id}}"><img src="css\logo-web.png" width="60px" align="center"></a>
+    </div>
+    <div class="navbar-collapse collapse navbar-warning-collapse">
+      <ul class="nav navbar-nav">
+        <li ng-if="usuarioActual.perfil === 'admin'"><a ng-href="#/usuarios">Módulo de usuarios <span class="sr-only">(current)</span></a></li>
+        <li ng-if="usuarioActual.perfil === 'cliente'"><a ng-href="#/inicioCliente/{{usuarioActual.perfil.$id}}">Inicio <span class="sr-only">(current)</span></a></li>
+        <li ng-if="usuarioActual.perfil === 'cliente'"><a ng-href="#/graficos/{{usuarioActual.perfil.$id}}">Gráficos <span class="sr-only">(current)</span></a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li ng-hide="sesionIniciada()"><a ng-href="#/sesion"> Ingreso </a></li>
+<!--         <li ng-hide="sesionIniciada()"><a ng-href="#/registro">Registro</a></li>
+ -->        <li ng-show="sesionIniciada()" class="dropdown">
+          <a ng-if="usuarioActual.perfil === 'cliente'" href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown">{{usuarioActual.perfil.nombre_empresa}}
+            <b class="caret"></b></a>
+            <a ng-if="usuarioActual.perfil === 'admin'" href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown">{{usuarioActual.perfil.nombre}}
+            <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li ng-if="usuarioActual.perfil === 'admin'"><a ng-href="#/perfilAdmin/{{usuarioActual.perfil.$id}}">Perfil</a></li>
+            <li class="divider"></li>
+            <li ng-if="usuarioActual.perfil === 'cliente'"><a ng-href="#/perfilCliente/{{usuarioActual.perfil.$id}}">Perfil</a></li>
+            <li class="divider"></li>
+            <li><a href="" ng-click="cerrarSesion()">Cerrar sesión</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
     <div ng-include ="vistas/footer.html"></div>
 
     <div ng-view=""></div>

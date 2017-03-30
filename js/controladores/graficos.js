@@ -39,7 +39,12 @@ $scope.usuarioActual = Aut.usuario; //Variable para controlar la info del usuari
             }
         };
        
-
+      // Prepare Excel data:
+  $scope.fileName = "Reporte";
+  $scope.exportData = [];
+  // Headers:
+  $scope.exportData.push([ "Fecha", "Hora"]);
+  // Data:
         Grafico.getVariablesTemperatura(usuarioId).$loaded(function(data){
                $scope.maximo = [];
              for (var i = 0; i < data.length-1; i++) {
@@ -65,10 +70,16 @@ $scope.usuarioActual = Aut.usuario; //Variable para controlar la info del usuari
                     fecha = fecha.splice(10,0," ");
                     fecha = fecha.splice(13,0,":");
                     fecha = fecha.splice(16,0,":");
+                    var fechados = data[i].$id;
+                    fechados = fechados.splice(4,0,"-");
+                    fechados = fechados.splice(7,0,"-");
+                    fechados = fechados.splice(10,0," ");
+                    fechados = fechados.splice(13,0,":");
+                    fechados = fechados.splice(16,0,":");
                     //console.log(new Date(fecha));
                     suma = suma + parseFloat(data[i].valor);
                     $scope.graph.data.push([ new Date(fecha),data[i].valor]);
-
+                    $scope.exportData.push([fechados, data[i].valor]);
     
                 }else{
 
@@ -76,15 +87,7 @@ $scope.usuarioActual = Aut.usuario; //Variable para controlar la info del usuari
             }
             $scope.promedio = Math.round(suma/data.length * 100) / 100;
            
-            // Prepare Excel data:
-  $scope.fileName = "Reporte";
-  $scope.exportData = [];
-  // Headers:
-  $scope.exportData.push([ "Fecha", "Hora"]);
-  // Data:
-  angular.forEach($scope.graph.data, function(value, key) {
-    $scope.exportData.push([value[0], value[1]]);
-  });
+ 
 
         });
 
@@ -127,24 +130,22 @@ $scope.usuarioActual = Aut.usuario; //Variable para controlar la info del usuari
                     fecha = fecha.splice(10,0," ");
                     fecha = fecha.splice(13,0,":");
                     fecha = fecha.splice(16,0,":");
+                    var fechados = data[i].$id;
+                    fechados = fechados.splice(4,0,"-");
+                    fechados = fechados.splice(7,0,"-");
+                    fechados = fechados.splice(10,0," ");
+                    fechados = fechados.splice(13,0,":");
+                    fechados = fechados.splice(16,0,":");
                     //console.log(new Date(fecha));
                     suma = suma + parseFloat(data[i].valor);
                     $scope.graph.data.push([ new Date(fecha),data[i].valor]);
+                    $scope.exportData.push([fechados, data[i].valor]);
                 }else{
 
                 }
             }
             //console.log(suma);
             $scope.promedio = Math.round(suma/data.length * 100) / 100;
-                // Prepare Excel data:
-  $scope.fileName = "Reporte";
-  $scope.exportData = [];
-  // Headers:
-  $scope.exportData.push([ "Fecha", "Hora"]);
-  // Data:
-  angular.forEach($scope.graph.data, function(value, key) {
-    $scope.exportData.push([value[0], value[1]]);
-  });
         });
         break;
         case "concentracionco2":
@@ -176,30 +177,28 @@ $scope.usuarioActual = Aut.usuario; //Variable para controlar la info del usuari
             var suma = 0;
             for(i in data){
                 if(data[i].hasOwnProperty('valor')){
-                    var fecha = data[i].$id;
+                   var fecha = data[i].$id;
                     fecha = fecha.splice(4,0,"-");
                     fecha = fecha.splice(7,0,"-");
                     fecha = fecha.splice(10,0," ");
                     fecha = fecha.splice(13,0,":");
                     fecha = fecha.splice(16,0,":");
+                    var fechados = data[i].$id;
+                    fechados = fechados.splice(4,0,"-");
+                    fechados = fechados.splice(7,0,"-");
+                    fechados = fechados.splice(10,0," ");
+                    fechados = fechados.splice(13,0,":");
+                    fechados = fechados.splice(16,0,":");
                     //console.log(new Date(fecha));
                     suma = suma + parseFloat(data[i].valor);
                     $scope.graph.data.push([ new Date(fecha),data[i].valor]);
+                    $scope.exportData.push([fechados, data[i].valor]);
                 }else{
 
                 }
             }
             //console.log(suma);
             $scope.promedio = Math.round(suma/data.length * 100) / 100;
-                // Prepare Excel data:
-  $scope.fileName = "Reporte";
-  $scope.exportData = [];
-  // Headers:
-  $scope.exportData.push([ "Fecha", "Hora"]);
-  // Data:
-  angular.forEach($scope.graph.data, function(value, key) {
-    $scope.exportData.push([value[0], value[1]]);
-  });
 
         });
         break;
@@ -234,30 +233,28 @@ $scope.usuarioActual = Aut.usuario; //Variable para controlar la info del usuari
             var suma = 0;
             for(i in data){
                 if(data[i].hasOwnProperty('valor')){
-                    var fecha = data[i].$id;
+                   var fecha = data[i].$id;
                     fecha = fecha.splice(4,0,"-");
                     fecha = fecha.splice(7,0,"-");
                     fecha = fecha.splice(10,0," ");
                     fecha = fecha.splice(13,0,":");
                     fecha = fecha.splice(16,0,":");
+                    var fechados = data[i].$id;
+                    fechados = fechados.splice(4,0,"-");
+                    fechados = fechados.splice(7,0,"-");
+                    fechados = fechados.splice(10,0," ");
+                    fechados = fechados.splice(13,0,":");
+                    fechados = fechados.splice(16,0,":");
                     //console.log(new Date(fecha));
                     suma = suma + parseFloat(data[i].valor);
                     $scope.graph.data.push([ new Date(fecha),data[i].valor]);
+                    $scope.exportData.push([fechados, data[i].valor]);
                 }else{
 
                 }
             }
             //console.log(suma);
             $scope.promedio = Math.round(suma/data.length * 100) / 100;
-                  // Prepare Excel data:
-  $scope.fileName = "Reporte";
-  $scope.exportData = [];
-  // Headers:
-  $scope.exportData.push([ "Fecha", "Hora"]);
-  // Data:
-  angular.forEach($scope.graph.data, function(value, key) {
-    $scope.exportData.push([value[0], value[1]]);
-  });
         });
         break;
         case "presionpaso":
@@ -289,31 +286,28 @@ $scope.usuarioActual = Aut.usuario; //Variable para controlar la info del usuari
             var suma = 0;
             for(i in data){
                 if(data[i].hasOwnProperty('valor')){
-
-                    var fecha = data[i].$id;
+var fecha = data[i].$id;
                     fecha = fecha.splice(4,0,"-");
                     fecha = fecha.splice(7,0,"-");
                     fecha = fecha.splice(10,0," ");
                     fecha = fecha.splice(13,0,":");
                     fecha = fecha.splice(16,0,":");
+                    var fechados = data[i].$id;
+                    fechados = fechados.splice(4,0,"-");
+                    fechados = fechados.splice(7,0,"-");
+                    fechados = fechados.splice(10,0," ");
+                    fechados = fechados.splice(13,0,":");
+                    fechados = fechados.splice(16,0,":");
                     //console.log(new Date(fecha));
                     suma = suma + parseFloat(data[i].valor);
                     $scope.graph.data.push([ new Date(fecha),data[i].valor]);
+                    $scope.exportData.push([fechados, data[i].valor]);
                 }else{
 
                 }
             }
             //console.log(suma);
             $scope.promedio = Math.round(suma/data.length * 100) / 100;
-    // Prepare Excel data:
-  $scope.fileName = "Reporte";
-  $scope.exportData = [];
-  // Headers:
-  $scope.exportData.push([ "Fecha", "Hora"]);
-  // Data:
-  angular.forEach($scope.graph.data, function(value, key) {
-    $scope.exportData.push([value[0], value[1]]);
-  });
         });
         break;
 
