@@ -1,6 +1,6 @@
-app.controller('AuthCtrl', function($scope, $location, Aut,Usuario,$firebaseObject, toaster) {
+app.controller('AuthCtrl', function($scope, $location, $firebaseArray,Aut,Usuario,$firebaseObject, toaster) {
 
-
+var ref = firebase.database().ref();
 	$scope.registro = function(usuario) {
 		console.log(usuario);
 		Aut.crearUsuario(usuario).then(function(){
@@ -14,20 +14,29 @@ app.controller('AuthCtrl', function($scope, $location, Aut,Usuario,$firebaseObje
 	$scope.sesion = function(usuario) {
 		Aut.sesion(usuario).then(function(usuarioLogueado){
 
+			var usuarioLog = $firebaseArray(ref.child('usuarios').orderByChild('email').equalTo(usuarioLogueado.email));
 			Usuario.usuarioElegido(usuarioLogueado.uid).$loaded(function(user){
-				console.log(user);
-				var refu = firebase.database().ref().child('/usuarios/'+user.$id);
+				console.log(usuarioLog[0]);
+				if(usuarioLog[0]!=null){
+						var refu = firebase.database().ref().child('/usuarios/'+usuarioLog[0].$id);
 				$scope.referecia = $firebaseObject(refu);
-				console.log($scope.referecia.perfil);
-				if($scope.referecia.perfil == 'cliente'){
+				console.log(usuarioLog[0].perfil);
+				if(usuarioLog[0].perfil == 'cliente'){
 
 					toaster.pop('success', 'Sesión iniciada exitosamente!');
-					$location.path('/inicioCliente/'+user.$id);
+					$location.path('/inicioCliente/'+usuarioLog[0].$id);
 				}else{
 					toaster.pop('success', 'Sesión iniciada exitosamente!');
 					$location.path('/usuarios');
 				}
+
+			}
+			else{
+					toaster.pop('success', 'Sesión iniciada exitosamente!');
+					$location.path('/usuarios');
+					}	
 			});
+			
 
 
 
