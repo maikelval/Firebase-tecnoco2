@@ -7,27 +7,27 @@
         <span class="icon-bar"></span>
       </button>
      
-      <a class="navbar-brand" ng-if="usuarioElegido.perfil === 'admin'" href="#/usuarios"><img src="css\logo-web.png" width="60px" align="center"></a>
-      <a class="navbar-brand" ng-if="usuarioElegido.perfil === 'cliente'" href="#/inicioCliente/{{usuarioElegido.perfil.$id}}"><img src="css\logo-web.png" width="60px" align="center"></a>
+      <a class="navbar-brand" ng-show="admin" href="#/usuarios"><img src="css\logo-web.png" width="60px" align="center"></a>
+      <a class="navbar-brand" ng-show="!admin" href="#/inicioCliente/{{userIs.$id}}"><img src="css\logo-web.png" width="60px" align="center"></a>
     </div>
     <div class="navbar-collapse collapse navbar-warning-collapse">
       <ul class="nav navbar-nav">
-        <li ng-if="usuarioElegido.perfil === 'admin'"><a ng-href="#/usuarios">Módulo de usuarios <span class="sr-only">(current)</span></a></li>
-        <li ng-if="usuarioElegido.perfil === 'cliente'"><a ng-href="#/inicioCliente/{{usuarioElegido.perfil.$id}}">Inicio <span class="sr-only">(current)</span></a></li>
-        <li ng-if="usuarioElegido.perfil === 'cliente'"><a ng-href="#/graficos/{{usuarioElegido.perfil.$id}}">Gráficos <span class="sr-only">(current)</span></a></li>
+        <li ng-show="admin"><a ng-href="#/usuarios">Módulo de usuarios <span class="sr-only">(current)</span></a></li>
+        <li ng-show="!admin"><a ng-href="#/inicioCliente/{{userIs.$id}}">Inicio <span class="sr-only">(current)</span></a></li>
+        <li ng-show="!admin"><a ng-href="#/graficos/{{userIs.$id}}">Gráficos <span class="sr-only">(current)</span></a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li ng-hide="sesionIniciada()"><a ng-href="#/sesion"> Ingreso </a></li>
 <!--         <li ng-hide="sesionIniciada()"><a ng-href="#/registro">Registro</a></li>
  -->        <li ng-show="sesionIniciada()" class="dropdown">
-          <a ng-if="usuarioElegido.perfil === 'cliente'" href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown">{{usuarioElegido.perfil.nombre_empresa}}
+          <a ng-show="!admin" href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown">{{userIs.nombre_empresa}}
             <b class="caret"></b></a>
-            <a ng-if="usuarioElegido.perfil === 'admin'" href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown">{{usuarioElegido.perfil.nombre}}
+            <a ng-show="admin" href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown">{{userIs.nombre}}
             <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li ng-if="usuarioElegido.perfil === 'admin'"><a ng-href="#/perfilAdmin/{{usuarioElegido.perfil.$id}}">Perfil</a></li>
+            <li ng-show="admin"><a ng-href="#/perfilAdmin/{{userIs.$id}}">Perfil</a></li>
             <li class="divider"></li>
-            <li ng-if="usuarioElegido.perfil === 'cliente'"><a ng-href="#/perfilCliente/{{usuarioElegido.perfil.$id}}">Perfil</a></li>
+            <li ng-show="!admin"><a ng-href="#/perfilCliente/{{userIs.$id}}">Perfil</a></li>
             <li class="divider"></li>
             <li><a href="" ng-click="cerrarSesion()">Cerrar sesión</a></li>
           </ul>

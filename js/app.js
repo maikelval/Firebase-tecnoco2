@@ -12,7 +12,8 @@ var app = angular
   ])
 
   .run(["$rootScope", "$location", function($rootScope, $location) {
-
+    $rootScope.admin =false;
+    $rootScope.cliente =false;
 
     
     $rootScope.$on("$routeChangeError", function(event, next, previous, error) {
