@@ -24,11 +24,15 @@ var ref = firebase.database().ref();
 				if(usuarioLog[0].perfil == 'cliente'){
 					$rootScope.cliente = true;
 					$rootScope.admin = false;
+					localStorage.setItem('admin',false);
+					localStorage.setItem('cliente',true);
 					toaster.pop('success', 'Sesión iniciada exitosamente!');
 					$location.path('/inicioCliente/'+usuarioLog[0].$id);
 				}else{
 					$rootScope.admin = true;
 					$rootScope.cliente = false;
+					localStorage.setItem('admin',true);
+					localStorage.setItem('cliente',false);
 					toaster.pop('success', 'Sesión iniciada exitosamente!');
 					$location.path('/usuarios');
 				}
@@ -37,6 +41,8 @@ var ref = firebase.database().ref();
 			else{
 				$rootScope.admin = true;
 				$rootScope.cliente = false;
+				localStorage.setItem('admin',true);
+					localStorage.setItem('cliente',false);
 					toaster.pop('success', 'Sesión iniciada exitosamente!');
 					$location.path('/usuarios');
 					}	

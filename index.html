@@ -39,26 +39,26 @@
       </button>
      
       <a class="navbar-brand" ng-show="admin" href="#/usuarios"><img src="css\logo-web.png" width="60px" align="center"></a>
-      <a class="navbar-brand" ng-show="cliente" href="#/inicioCliente/{{usuarioActual.perfil.$id}}"><img src="css\logo-web.png" width="60px" align="center"></a>
+      <a class="navbar-brand" ng-show="!admin" href="#/inicioCliente/{{usuarioActual.perfil.$id}}"><img src="css\logo-web.png" width="60px" align="center"></a>
     </div>
     <div class="navbar-collapse collapse navbar-warning-collapse">
       <ul class="nav navbar-nav">
         <li ng-show="admin"><a ng-href="#/usuarios">Módulo de usuarios <span class="sr-only">(current)</span></a></li>
-        <li ng-show="cliente"><a ng-href="#/inicioCliente/{{usuarioActual.perfil.$id}}">Inicio <span class="sr-only">(current)</span></a></li>
-        <li ng-show="cliente"><a ng-href="#/graficos/{{usuarioActual.perfil.$id}}">Gráficos <span class="sr-only">(current)</span></a></li>
+        <li ng-show="!admin"><a ng-href="#/inicioCliente/{{usuarioActual.perfil.$id}}">Inicio <span class="sr-only">(current)</span></a></li>
+        <li ng-show="!admin"><a ng-href="#/graficos/{{usuarioActual.perfil.$id}}">Gráficos <span class="sr-only">(current)</span></a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li ng-hide="sesionIniciada()"><a ng-href="#/sesion"> Ingreso </a></li>
 <!--         <li ng-hide="sesionIniciada()"><a ng-href="#/registro">Registro</a></li>
  -->        <li ng-show="sesionIniciada()" class="dropdown">
-          <a ng-show="cliente" href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown">{{usuarioActual.perfil.nombre_empresa}}
+          <a ng-show="!admin" href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown">{{usuarioActual.perfil.nombre_empresa}}
             <b class="caret"></b></a>
             <a ng-show="admin" href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown">{{usuarioActual.perfil.nombre}}
             <b class="caret"></b></a>
           <ul class="dropdown-menu">
             <li ng-show="admin"><a ng-href="#/perfilAdmin/{{usuarioActual.perfil.$id}}">Perfil</a></li>
             <li class="divider"></li>
-            <li ng-show="cliente"><a ng-href="#/perfilCliente/{{usuarioActual.perfil.$id}}">Perfil</a></li>
+            <li ng-show="!admin"><a ng-href="#/perfilCliente/{{usuarioActual.perfil.$id}}">Perfil</a></li>
             <li class="divider"></li>
             <li><a href="" ng-click="cerrarSesion()">Cerrar sesión</a></li>
           </ul>

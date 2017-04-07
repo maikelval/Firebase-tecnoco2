@@ -5,7 +5,7 @@
     <div class="jumbotron">
       <div class="container">
         <h2 align="center">Gráfico {{grafico.nombre.nombre}}</h2>
-        <input type="" ng-if="usuarioActual.perfil.perfil === 'admin'" ng-change="editarTemperatura(grafico)" ng-model="grafica.name" name="">
+        <input type="" ng-if="admin" ng-change="editarTemperatura(grafico)" ng-model="grafica.name" name="">
       </div>
     </div>
 

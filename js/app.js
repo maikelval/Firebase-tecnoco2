@@ -12,9 +12,10 @@ var app = angular
   ])
 
   .run(["$rootScope", "$location", function($rootScope, $location) {
-    $rootScope.admin =false;
-    $rootScope.cliente =false;
-
+    $rootScope.admin =localStorage.getItem('admin');
+    $rootScope.cliente =localStorage.getItem('cliente');
+    console.log($rootScope.admin);
+    console.log($rootScope.cliente);
     
     $rootScope.$on("$routeChangeError", function(event, next, previous, error) {
       // We can catch the error thrown when the $requireSignIn promise is rejected
