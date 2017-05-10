@@ -9,4 +9,32 @@
 	height: auto
 }
 
-
+.footer.ng-scope {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+.footer.ng-scope>div{
+margin-bottom: 0px;
+}
+.contentMain {
+    min-height: calc(100vh - 179px);
+}
+.footerJodido{
+	margin: 0 auto;
+	    float: none;
+}
+.whiteText{
+	color:#fff;
+}
+ul.nav.navbar-nav {
+    padding-top: 20px;
+}
+.auth-form {
+    max-width: 450px;
+    margin: 40px auto;
+    padding: 1px 25px 25px 25px;
+    margin: 0 auto;
+    float: none!important;
+    padding-top: 60px;
+}

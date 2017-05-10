@@ -22,24 +22,26 @@ var ref = firebase.database().ref();
 				$scope.referecia = $firebaseObject(refu);
 				console.log(usuarioLog[0].perfil);
 				if(usuarioLog[0].perfil == 'cliente'){
-					$rootScope.cliente = true;
-					$rootScope.admin = false;
+					$rootScope.adminnistrador = false;
 					localStorage.setItem('admin',false);
-					localStorage.setItem('cliente',true);
 					toaster.pop('success', 'Sesión iniciada exitosamente!');
+					//location.reload();
 					$location.path('/inicioCliente/'+usuarioLog[0].$id);
-				}else{
-					$rootScope.admin = true;
+					
+				}
+				if(usuarioLog[0].perfil !== 'cliente'){
+					$rootScope.adminnistrador = true;
 					$rootScope.cliente = false;
 					localStorage.setItem('admin',true);
-					localStorage.setItem('cliente',false);
+					
 					toaster.pop('success', 'Sesión iniciada exitosamente!');
 					$location.path('/usuarios');
+					//location.reload();
 				}
 
 			}
 			else{
-				$rootScope.admin = true;
+				$rootScope.adminnistrador = true;
 				$rootScope.cliente = false;
 				localStorage.setItem('admin',true);
 					localStorage.setItem('cliente',false);

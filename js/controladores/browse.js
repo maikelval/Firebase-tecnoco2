@@ -3,11 +3,11 @@ app.controller('BrowseCtrl', function($scope, $location, $routeParams, Usuario, 
     var Auth = $firebaseAuth();
     var ref = firebase.database().ref();
     
-    var config2 = {apiKey: "AIzaSyDt_uz9TUBRaj7hEI5EEuj18xYV9TWbyts",
-    authDomain: "tecno-co2-c4ab9.firebaseapp.com",
-    databaseURL: "https://tecno-co2-c4ab9.firebaseio.com",
-    storageBucket: "tecno-co2-c4ab9.appspot.com",
-    messagingSenderId: "895802275556"};
+    var config2 = { apiKey: "AIzaSyBAawMfRuoOuliMEEmqbN9aFOySmkvwbxI",
+    authDomain: "wefwefewf-3d07c.firebaseapp.com",
+    databaseURL: "https://wefwefewf-3d07c.firebaseio.com",
+    storageBucket: "wefwefewf-3d07c.appspot.com",
+    messagingSenderId: "821672946646"};
     var secondaryApp;
 
     $scope.usuarios = Usuario.all;
